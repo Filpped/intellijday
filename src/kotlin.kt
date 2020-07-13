@@ -23,7 +23,7 @@ fun main() {
     println("密码正确！")
 
 
-    loop@do {
+    loop@ do {
         println("**********************")
         println("请选择您想进行的操作：")
         println("1.存款")
@@ -33,7 +33,7 @@ fun main() {
         println("5.退出登录")
         println("**********************")
         val num2 = scanner.nextInt()
-          when (num2) {
+        when (num2) {
             1 -> {
                 do {
                     print("请输入您想存入的金额：")
@@ -42,8 +42,8 @@ fun main() {
                     println("存款成功！您现在的余额为${oldnum + num3}元")
                     oldnum += num3
                     println("是否继续取款？1.继续 2退出")
-                    val input3= readLine()
-                }while(input3=="1")
+                    val input3 = readLine()
+                } while (input3 == "1")
             }
             2 -> {
                 do {
@@ -55,11 +55,24 @@ fun main() {
                     } else println("您的余额不足！请充值后再进行该操作！")
                     print("是否继续存款：1.继续  2.退出")
                     val num5 = scanner.nextInt()
-                }while(num5==1)
+                } while (num5 == 1)
             }
             3 -> {
-                print("请输入您想要修改的密码：")
-                val input = readLine()
+                do {
+                    print("请输入您想要修改的密码：")
+                    val input = readLine()
+                    print("请确认密码：")
+                    val input2 = readLine()
+                    if (input == input2) {
+                        println("密码修改成功！")
+                        if (input != null) {
+                            old = input.toInt()
+                        }
+
+                    } else {
+                        println("两次输入密码不一致！ 请重新输入！")
+                    }
+                } while (input != input2)
             }
             4 -> {
                 println("您当前的余额为$oldnum 元")
